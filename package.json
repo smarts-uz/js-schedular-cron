@@ -1,0 +1,26 @@
+{
+  "name": "js-schedular-cron",
+  "version": "1.0.0",
+  "description": "Cron job scheduler for warehouse management",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "cron",
+    "scheduler",
+    "mariadb"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cron": "^2.3.1",
+    "dotenv": "^16.3.1",
+    "mysql2": "^3.6.5"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}
