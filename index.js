@@ -1,4 +1,4 @@
-import { startWarehouseJob, startSmsSenderJob } from './scheduler.js';
+import { startWarehouseJob, startSmsSenderJob } from './src/scheduler.js';
 
 // Joblarni ishga tushirish
 startWarehouseJob();

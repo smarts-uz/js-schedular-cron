@@ -23,7 +23,7 @@ const job1 = new CronJob(
 );
 
 const smsSenderJob = new CronJob(
-	'5 * * * * *', // Run every 5 seconds
+	'0 9 * * *', // Har kuni soat 9:00 da run bo'ladi
 	async () => {
 		try {
 			console.log('SMS sender job started...');

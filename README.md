@@ -2,26 +2,47 @@
 
 ## Project Description
 
-This project is a Node.js-based cron job scheduler designed for automatic warehouse creation in MariaDB.
+A flexible Node.js-based cron job scheduler for automated tasks, including warehouse creation and SMS notifications.
 
 ## Features
 
-- 🔄 Automatic cron job running every 5 seconds
+- 🔄 Configurable cron jobs with precise control
 - 🗃️ MariaDB integration
-- 🔒 Configuration via environment variables
-- 🚀 Easy setup and development
+- 📱 SMS notification system with Eskiz API
+- 🔒 Environment-based configuration
+- 🚀 Modular and extensible architecture
 
-## Getting Started
+## Project Structure
 
-### Requirements
+```
+js-schedular-cron/
+│
+├── index.js          # Main entry point
+├── .env              # Environment configuration
+├── package.json      # Project dependencies
+│
+└── src/
+    ├── scheduler.js      # Job scheduling and control
+    ├── sms-sender.js     # SMS sending functionality
+    └── db-connection.js  # Centralized database connection
+```
+
+## Project Structure Details
+
+- `index.js`: Application entry point
+- `src/scheduler.js`: Manages cron jobs and their lifecycle
+- `src/sms-sender.js`: Handles SMS sending logic
+- `src/db-connection.js`: Centralized database connection management
+
+## Prerequisites
 
 - Node.js (v14 or higher)
 - npm (v6 or higher)
 - MariaDB server
 
-### Installation
+## Installation
 
-1. Clone the project:
+1. Clone the repository:
 ```bash
 git clone https://github.com/your-username/js-schedular-cron.git
 cd js-schedular-cron
@@ -32,17 +53,41 @@ cd js-schedular-cron
 npm install
 ```
 
-3. Create a `.env` file and set up configurations:
+3. Create and configure `.env` file:
 ```
 DB_HOST=localhost
 DB_PORT=3306
 DB_USER=root
-DB_PASSWORD=your_password
-DB_NAME=dbname
+DB_PASSWORD=your_database_password
+DB_NAME=your_database_name
 DB_TIMEZONE=Asia/Tashkent
+
+ESKIZ_EMAIL=your_eskiz_email
+ESKIZ_PASSWORD=your_eskiz_password
 ```
 
-### Running the Project
+## Job Control
+
+### Starting Jobs
+
+```javascript
+import { 
+    startWarehouseJob, 
+    startSmsSenderJob,
+    stopWarehouseJob,
+    stopSmsSenderJob 
+} from './scheduler.js';
+
+// Start specific jobs
+startWarehouseJob();
+startSmsSenderJob();
+
+// Stop jobs when needed
+stopWarehouseJob();
+stopSmsSenderJob();
+```
+
+## Running the Application
 
 - Development mode:
 ```bash
@@ -54,47 +99,55 @@ npm run dev
 npm start
 ```
 
-## Configuration
+## Configuration Options
 
-- Modify cron job timing in `index.js`
-- Adjust database parameters in the `.env` file
+### Cron Job Timing
+Modify job intervals in `scheduler.js`:
+- Default: Every 5 seconds (`*/5 * * * * *`)
+- Customize based on your requirements
+
+### Database Connection
+- Centralized connection management in `db-connection.js`
+- Connection pool with configurable limits
+
+### SMS Notifications
+- Configurable via environment variables
+- Supports custom message templates
 
 ## Troubleshooting
 
-- Database connection issues: Check your `.env` file
-- Cron job not working: Verify Node.js and package versions
-
-## Workflow
-
-1. The script connects to the specified MariaDB database
-2. Executes a stored procedure to create a warehouse
-3. Logs the results or any errors
-4. Repeats every 5 seconds
+- Database Connection Issues:
+  - Check `.env` file credentials
+  - Verify network access
+- SMS Sending Failures:
+  - Validate Eskiz API credentials
+  - Check network connectivity
 
 ## Security Considerations
 
-- Use strong, unique database credentials
-- Keep `.env` file private
+- Never commit `.env` file to version control
+- Use strong, unique credentials
 - Implement proper error handling
+- Regularly update dependencies
 
 ## Logging
 
-- Console logs for successful warehouse creation
-- Error logging for connection or execution issues
+- Console logs for job executions
+- Error tracking for database and SMS operations
 
-## Scaling and Performance
+## Performance Optimization
 
-- Adjust cron interval as needed
-- Monitor database connection performance
-- Consider connection pooling for high-load scenarios
+- Connection pooling
+- Efficient error handling
+- Modular design for easy scaling
 
-## Contribution
+## Contributing
 
-1. Fork the project
-2. Create a new branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+1. Fork the repository
+2. Create a feature branch
+3. Commit your changes
+4. Push to the branch
+5. Create a Pull Request
 
 ## License
 
