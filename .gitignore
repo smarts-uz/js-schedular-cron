@@ -3,11 +3,11 @@ node_modules/
 
 # Environment files
 .env
-*.env
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
+!.env.example
+*.env.local
+*.env.development
+*.env.test
+*.env.production
 
 # Logs
 logs
@@ -15,6 +15,26 @@ logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# Temporary files
+tmp/
+temp/
+
+# Compiled files
+dist/
+build/
+
+# IDE and editor files
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# Dependency lock files
+package-lock.json
+yarn.lock
 
 # Optional npm cache directory
 .npm
@@ -31,10 +51,7 @@ yarn-error.log*
 # Yarn Integrity file
 .yarn-integrity
 
-# dotenv environment variables file
-.env.local
-
-# parcel-bundler cache (https://parceljs.org/)
+# Parcel cache
 .cache
 
 # Next.js build output
@@ -46,22 +63,29 @@ dist
 
 # Gatsby files
 .cache/
-# Comment in the public line in if your project uses Gatsby and not Next.js
-# https://nextjs.org/blog/next-9-1#public-directory-support
-# public
 
 # vuepress build output
 .vuepress/dist
 
+# Serverless directories
+.serverless/
+
+# FuseBox cache
+.fusebox/
+
+# DynamoDB Local files
+.dynamodb/
+
+# TernJS port file
+.tern-port
+
+# Comment in the public line in if your project uses Gatsby and not Next.js
+# https://nextjs.org/blog/next-9-1#public-directory-support
+# public
+
 # Temporary folders
 tmp/
 temp/
-
-# IDE specific files
-.idea/
-.vscode/
-*.swp
-*.swo
 
 # OS generated files
 .DS_Store
@@ -69,5 +93,4 @@ temp/
 ._*
 .Spotlight-V100
 .Trashes
-ehthumbs.db
-Thumbs.db 
+ehthumbs.db 

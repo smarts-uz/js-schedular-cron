@@ -66,6 +66,43 @@ ESKIZ_EMAIL=your_eskiz_email
 ESKIZ_PASSWORD=your_eskiz_password
 ```
 
+## Environment Configuration
+
+The project uses environment variables for configuration. Follow these steps:
+
+1. Copy `.env.example` to `.env`:
+```bash
+cp .env.example .env
+```
+
+2. Edit `.env` and replace placeholder values:
+```
+# Database settings
+DB_HOST=localhost
+DB_PORT=3306
+DB_USER=your_username
+DB_PASSWORD=your_password
+DB_NAME=your_database
+DB_TIMEZONE=Asia/Tashkent
+
+# Eskiz SMS API credentials
+ESKIZ_EMAIL=your_email@example.com
+ESKIZ_PASSWORD=your_api_password
+```
+
+### Environment Variables Explained
+
+- `DB_HOST`: Database server address
+- `DB_PORT`: Database server port
+- `DB_USER`: Database username
+- `DB_PASSWORD`: Database user password
+- `DB_NAME`: Database name
+- `DB_TIMEZONE`: Timezone for job scheduling
+- `ESKIZ_EMAIL`: Eskiz API email
+- `ESKIZ_PASSWORD`: Eskiz API password
+
+**Important**: Never commit your `.env` file to version control. It contains sensitive information.
+
 ## Job Control
 
 ### Starting Jobs
